@@ -8,7 +8,15 @@
 void init_stack(std::stack<int> &actions, std::map<std::string,int> &assoc, std::string filename);
 std::map<std::string,int> init_map();
 bool is_num(std::string num);
+void exec(std::stack<int> cmds);
 
+    ////////////////
+    //
+    //
+    //    intialize the GPIO pins for the buttons here
+    //
+    //
+    ////////////////
 
 int main(){
 
@@ -16,15 +24,34 @@ int main(){
     std::stack<int> cmds_one;
     std::stack<int> cmds_two;
     std::stack<int> cmds_three;
+    std::stack<int> cmds_four;
 
     init_stack(cmds_one, keys, "Profile_One");
     init_stack(cmds_two, keys, "Profile_Two");
     init_stack(cmds_three, keys, "Profile_Three");
+    init_stack(cmds_four, keys, "Profile_Four");
 
-    while(!cmds_one.empty()){
-       std::cout << cmds_one.top() << std::endl;
-       cmds_one.pop();
-   }
+    while(true){
+        if(button1){ //change to microcontroller 1
+            exec(cmds_one);
+        }
+        if(button2){ //change to microcontroller 2
+            exec(cmds_two);
+        }
+        if(button3){ //change to microcontroller 3
+            exec(cmds_three);
+        }
+        if(button4){ //change to microcontroller 4
+            exec(cmds_four);
+        }
+    }
+
+}
+
+void exec(std::stack<int> cmds){
+
+//command execution function
+
 
 }
 
@@ -60,6 +87,8 @@ void init_stack(std::stack<int> &actions, std::map<std::string,int> &assoc, std:
 
    
 }
+
+
 
 
 std::map<std::string,int> init_map(){
@@ -113,3 +142,4 @@ bool is_num(std::string num){
 
     return true;
 }
+
