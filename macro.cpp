@@ -7,6 +7,7 @@
 
 void init_stack(std::stack<int> &actions, std::map<std::string,int> &assoc, std::string filename);
 std::map<std::string,int> init_map();
+bool is_num(std::string num);
 
 
 int main(){
@@ -45,6 +46,9 @@ void init_stack(std::stack<int> &actions, std::map<std::string,int> &assoc, std:
     for(int i = unparsed_actions.size()-1; i >= 0; i--){
         if(assoc.find(unparsed_actions[i]) != assoc.end()){
             actions.push(assoc[unparsed_actions[i]]);
+        }
+        else if(is_num(unparsed_actions[i]) && std::stoi(unparsed_actions[i])>49){
+            actions.push(std::stoi(unparsed_actions[i]));
         }
     }
 
@@ -96,4 +100,16 @@ std::map<std::string,int> init_map(){
     };
 
     return keys;
+}
+//used only for init
+bool is_num(std::string num){
+    if(num == ""){return false;}
+    for(char i : num){
+        
+        if(!(int(i) > 47 && int(i) < 58)){
+            return false;
+        }
+    }
+
+    return true;
 }
