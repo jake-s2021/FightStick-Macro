@@ -11,6 +11,8 @@ def main():
     cmds_three = init_stack(keys, "Profile_Three")
     cmds_four = init_stack(keys, "Profile_Four")
 
+    #print(cmds_one)
+
     while 1:
         if True:
             _exec(cmds_one)
@@ -29,7 +31,6 @@ def init_stack(keys, filename):
     
     profile = open(filename, "r")
     unparsed_actions = profile.read().splitlines()
-    print(unparsed_actions)
     actions = []
 
     i = len(unparsed_actions)-1
