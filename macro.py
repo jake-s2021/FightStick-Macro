@@ -38,7 +38,8 @@ def init_stack(keys, filename):
         if unparsed_actions[i] in keys:
             actions.append(keys[unparsed_actions[i]])
         elif unparsed_actions[i].isnumeric():
-            actions.append(int(unparsed_actions[i]))
+            if int(unparsed_actions[i]) >= 50:
+                actions.append(int(unparsed_actions[i]))
         i -= 1
 
     profile.close()
