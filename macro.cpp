@@ -82,12 +82,13 @@ int main(){
         }
         if(true){
             if(player == 1){
-                player == 2;
+                player = 2;
             }
             else{
-                player == 1;
+                player = 1;
             }
         }
+        std::exit(1);
     }
 
 }
