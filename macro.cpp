@@ -88,7 +88,6 @@ int main(){
                 player = 1;
             }
         }
-        std::exit(1);
     }
 
 }
