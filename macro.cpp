@@ -6,6 +6,7 @@
 #include<vector>
 #include<thread>
 #include<chrono>
+#include<wiringPi.h>
 
 void init_stack(std::stack<int> &actions, std::map<std::string,int> &assoc, std::string filename);
 std::map<std::string,int> init_map();
@@ -45,14 +46,6 @@ void DHCBF(int &player);
 void SPD(int &player);
 void DSPD(int &player);
 
-    ////////////////
-    //
-    //
-    //    intialize the GPIO pins for the buttons here
-    //
-    //
-    ////////////////
-
 int main(){
 
     std::map<std::string,int> keys = init_map();
@@ -66,6 +59,9 @@ int main(){
     init_stack(cmds_two, keys, "Profile_Two");
     init_stack(cmds_three, keys, "Profile_Three");
     init_stack(cmds_four, keys, "Profile_Four");
+
+    wiringPiSetup();
+
 
     while(true){
         if(true){ //change to microcontroller 1
