@@ -7,6 +7,31 @@
 #include<thread>
 #include<chrono>
 #include<wiringPi.h>
+#define A_ON digitalWrite(8, HIGH)
+#define A_OFF digitalWrite(8, LOW)
+#define B_ON digitalWrite(10, HIGH)
+#define B_OFF digitalWrite(10, LOW)
+#define X_ON digitalWrite(12, HIGH)
+#define X_OFF digitalWrite(12, LOW)
+#define Y_ON digitalWrite(16, HIGH)
+#define Y_OFF digitalWrite(16, LOW)
+#define RB_ON digitalWrite(18, HIGH)
+#define RB_OFF digitalWrite(18, LOW)
+#define RT_ON digitalWrite(22, HIGH)
+#define RT_OFF digitalWrite(22, LOW)
+#define LB_ON digitalWrite(24, HIGH)
+#define LB_OFF digitalWrite(24, LOW)
+#define LT_ON digitalWrite(26, HIGH)
+#define LT_OFF digitalWrite(26, LOW)
+#define U_ON digitalWrite(28, HIGH)
+#define U_OFF digitalWrite(28, LOW)
+#define D_ON digitalWrite(32, HIGH)
+#define D_OFF digitalWrite(32, LOW)
+#define L_ON digitalWrite(36, HIGH)
+#define L_OFF digitalWrite(36, LOW)
+#define R_ON digitalWrite(38, HIGH)
+#define R_OFF digitalWrite(38, LOW)
+
 
 void init_stack(std::stack<int> &actions, std::map<std::string,int> &assoc, std::string filename);
 std::map<std::string,int> init_map();
@@ -62,21 +87,40 @@ int main(){
 
     wiringPiSetup();
 
+    pinMode(8,OUTPUT);
+    pinMode(10,OUTPUT);
+    pinMode(12,OUTPUT);
+    pinMode(16,OUTPUT);
+    pinMode(18,OUTPUT);
+    pinMode(22,OUTPUT);
+    pinMode(24,OUTPUT);
+    pinMode(26,OUTPUT);
+    pinMode(28,OUTPUT);
+    pinMode(32,OUTPUT);
+    pinMode(36,OUTPUT);
+    pinMode(38,OUTPUT);
+
+    pinMode(29, INPUT);
+    pinMode(31, INPUT);
+    pinMode(33, INPUT);
+    pinMode(35, INPUT);
+    pinMode(37, INPUT);
+
 
     while(true){
-        if(true){ //change to microcontroller 1
+        if(digitalRead(29)){ //change to microcontroller 1
             exec(cmds_one, player);
         }
-        if(true){ //change to microcontroller 2
+        if(digitalRead(31)){ //change to microcontroller 2
             exec(cmds_two, player);
         }
-        if(true){ //change to microcontroller 3
+        if(digitalRead(33)){ //change to microcontroller 3
             exec(cmds_three, player);
         }
-        if(true){ //change to microcontroller 4
+        if(digitalRead(35)){ //change to microcontroller 4
             exec(cmds_four, player);
         }
-        if(true){
+        if(digitalRead(37)){
             if(player == 1){
                 player = 2;
             }
@@ -324,57 +368,169 @@ void sleep(int ms){
 }
 
 void A(){
+    A_ON;
+    sleep(17);
+    A_OFF;
 
 }
 void B(){
-
+    B_ON;
+    sleep(17);
+    B_OFF;
 }
 void X(){
-
+    X_ON;
+    sleep(17);
+    X_OFF;
 }
 void Y(){
-
+    Y_ON;
+    sleep(17);
+    Y_OFF;
 }
 void RB(){
-
+    RB_ON;
+    sleep(17);
+    RB_OFF;
 }
 void RT(){
-
+    RT_ON;
+    sleep(17);
+    RT_OFF;
 }
 void LB(){
-
+    LB_ON;
+    sleep(17);
+    LB_OFF;
 }
 void LT(){
-
+    LT_ON;
+    sleep(17);
+    LT_OFF;
 }
 void U(){
-
+    U_ON;
+    sleep(17);
+    U_OFF;
 }
 void D(){
-
+    D_ON;
+    sleep(17);
+    D_OFF;
 }
 void L(int &player){
-
+    if(player == 1){
+        L_ON;
+        sleep(17);
+        L_OFF;
+    }
+    else{
+        R_ON;
+        sleep(17);
+        R_OFF;
+    }
 }
 void R(int &player){
-
+    if(player == 1){
+        R_ON;
+        sleep(17);
+        R_OFF;
+    }
+    else{
+        L_ON;
+        sleep(17);
+        L_OFF;
+    }
 }
 void UR(int &player){
+    if(player == 1){
+        U_ON;
+        R_ON;
+        sleep(17);
+        U_OFF;
+        R_OFF;
+    }
+    else{
+        U_ON;
+        L_ON;
+        sleep(17);
+        U_OFF;
+        L_OFF;
+    }
 
 }
 void UL(int &player){
-
+    if(player == 1){
+        U_ON;
+        L_ON;
+        sleep(17);
+        U_OFF;
+        L_OFF;
+    }
+    else{
+        U_ON;
+        R_ON;
+        sleep(17);
+        U_OFF;
+        R_OFF;
+    }
 }
 void DR(int &player){
-
+    if(player == 1){
+        D_ON;
+        R_ON;
+        sleep(17);
+        D_OFF;
+        R_OFF;
+    }
+    else{
+        D_ON;
+        L_ON;
+        sleep(17);
+        D_OFF;
+        L_OFF;
+    }
 }
 void DL(int &player){
-
+    if(player == 1){
+        D_ON;
+        L_ON;
+        sleep(17);
+        D_OFF;
+        L_OFF;     
+    }
+    else{
+        D_ON;
+        R_ON;
+        sleep(17);
+        D_OFF;
+        R_OFF;     
+    }
 }
 void QCF(int &player){
+    if(player == 1){
+        D();
+        DR(1);
+        R(1);
+    }
+    else{
+        D();
+        DL(1);
+        L(1);
+    }
 
 }
 void QCB(int &player){
+    if(player == 1){
+        D();
+        DL(1);
+        L(1);
+    }
+    else{
+        D();
+        DR(1);
+        R(1);       
+    }
 
 }
 void HCF(int &player){
