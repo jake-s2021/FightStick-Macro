@@ -154,9 +154,11 @@ int main(){
         if(digitalRead(25)){
             if(player == 1){
                 player = 2;
+                digitalWrite(29, LOW);
             }
             else{
                 player = 1;
+                digitalWrite(29, HIGH);
             }
         }
     }
