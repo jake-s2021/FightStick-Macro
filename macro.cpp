@@ -551,44 +551,188 @@ void QCB(int &player){
 
 }
 void HCF(int &player){
+    if(player == 1){
+        L(1);
+        DL(1);
+        D();
+        DR(1);
+        R(1);
+    }
+    else{
+        R(1);
+        DR(1);
+        D();
+        DL(1);
+        L(1);
+    }
 
 }
 void HCB(int &player){
-
+    if(player == 1){
+        R(1);
+        DR(1);
+        D();
+        DL(1);
+        L(1);
+    }
+    else{
+        L(1);
+        DL(1);
+        D();
+        DR(1);
+        R(1);
+    }
 }
 void HCFB(int &player){
+    if(player == 1){
+        L(1);
+        DL(1);
+        D();
+        DR(1);
+        R(1);
+        L(1);
+    }
+    else{
+        R(1);
+        DR(1);
+        D();
+        DL(1);
+        L(1);
+        R(1);
+    }
 
 }
 void HCBF(int &player){
-
+    if(player == 1){
+        R(1);
+        DR(1);
+        D();
+        DL(1);
+        L(1);
+        R(1);
+    }
+    else{
+        L(1);
+        DL(1);
+        D();
+        DR(1);
+        R(1);
+        L(1);
+    }
 }
 void DP(int &player){
+    if(player == 1){
+        R(1);
+        D();
+        DR(1);
+    }
+    else{
+        L(1);
+        D();
+        DL(1);
+    }
 
 }
 void RDP(int &player){
+    if(player == 1){
+        L(1);
+        D();
+        DL(1);
+    }
+    else{
+        R(1);
+        D();
+        DR(1);
+    }
 
 }
 void DQCF(int &player){
+    if(player == 1){
+        QCF(1);
+        QCF(1);
+    }
+    else{
+        QCB(1);
+        QCB(1);
+    }
 
 }
 void DQCB(int &player){
-
+    if(player == 1){
+        QCB(1);
+        QCB(1);
+    }
+    else{
+        QCF(1);
+        QCF(1);
+    }
 }
 void DHCF(int &player){
-
+    if(player == 1){
+        HCF(1);
+        HCF(1);
+    }
+    else{
+        HCB(1);
+        HCB(1);
+    }
 }
 void DHCB(int &player){
-
+    if(player == 1){
+        HCB(1);
+        HCB(1);
+    }
+    else{
+        HCF(1);
+        HCF(1);       
+    }
 }
 void DHCFB(int &player){
-
+    if(player == 1){
+        HCFB(1);
+        HCFB(1);
+    }
+    else{
+        HCBF(1);
+        HCBF(1);
+    }
 }
 void DHCBF(int &player){
+    if(player == 1){
+        HCBF(1);
+        HCBF(1);        
+    }
+    else{
+        HCFB(1);
+        HCFB(1);
+    }
 
 }
 void SPD(int &player){
-
+    if(player == 1){
+        R(1);
+        DR(1);
+        D();
+        DL(1);
+        L(1);
+        UL(1);
+        U();
+        UR(1);
+        R(1);
+    }
+    else{
+        L(1);
+        DL(1);
+        D();
+        DR(1);
+        R(1);
+        UR(1);
+        U();
+        UL(1);
+        L(1);
+    }
 }
 void DSPD(int &player){
-
+    SPD(player);
+    SPD(player);
 }
