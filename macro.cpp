@@ -33,10 +33,10 @@
 #define R_OFF digitalWrite(28, LOW)
 
 
-void init_stack(std::stack<int> &actions, std::map<std::string,int> &assoc, std::string filename);
+void init_stack(std::stack<int> &actions, std::map<std::string,int> assoc, std::string filename);
 std::map<std::string,int> init_map();
 bool is_num(std::string num);
-void exec(std::stack<int> cmds, int &player);
+void exec(std::stack<int> cmds, int player);
 void sleep(int ms);
 void A();
 void B();
@@ -48,28 +48,44 @@ void LB();
 void LT();
 void U();
 void D();
-void L(int &player);
-void R(int &player);
-void UR(int &player);
-void UL(int &player);
-void DR(int &player);
-void DL(int &player);
-void QCF(int &player);
-void QCB(int &player);
-void HCF(int &player);
-void HCB(int &player);
-void HCFB(int &player);
-void HCBF(int &player);
-void DP(int &player);
-void RDP(int &player);
-void DQCF(int &player);
-void DQCB(int &player);
-void DHCF(int &player);
-void DHCB(int &player);
-void DHCFB(int &player);
-void DHCBF(int &player);
-void SPD(int &player);
-void DSPD(int &player);
+void L(int player);
+void R(int player);
+void UR(int player);
+void UL(int player);
+void DR(int player);
+void DL(int player);
+void QCF(int player);
+void QCB(int player);
+void HCF(int player);
+void HCB(int player);
+void HCFB(int player);
+void HCBF(int player);
+void DP(int player);
+void RDP(int player);
+void DQCF(int player);
+void DQCB(int player);
+void DHCF(int player);
+void DHCB(int player);
+void DHCFB(int player);
+void DHCBF(int player);
+void SPD(int player);
+void DSPD(int player);
+void U_Hold();
+void D_Hold();
+void L_Hold(int player);
+void R_Hold(int player);
+void UR_Hold(int player);
+void UL_Hold(int player);
+void DR_Hold(int player);
+void DL_Hold(int player);
+void U_Release();
+void D_Release();
+void L_Release(int player);
+void R_Release(int player);
+void UR_Release(int player);
+void UL_Release(int player);
+void DR_Release(int player);
+void DL_Release(int player);
 
 int main(){
 
@@ -147,7 +163,7 @@ int main(){
 
 }
 
-void exec(std::stack<int> cmds, int &player){
+void exec(std::stack<int> cmds, int player){
 
     while(!cmds.empty()){
         int next = cmds.top();
@@ -255,36 +271,52 @@ void exec(std::stack<int> cmds, int &player){
                     DSPD(player);
 					break;
 				case 33:
+                    U_Hold();
 					break;
 				case 34:
+                    D_Hold();
 					break;
 				case 35:
+                    L_Hold(player);
 					break;
 				case 36:
+                    R_Hold(player);
 					break;
 				case 37:
+                    UR_Hold(player);
 					break;
 				case 38:
+                    UL_Hold(player);
 					break;
 				case 39:
+                    DR_Hold(player);
 					break;
 				case 40:
+                    DL_Hold(player);
 					break;
 				case 41:
+                    U_Release();
 					break;
 				case 42:
+                    D_Release();
 					break;
 				case 43:
+                    L_Release(player);
 					break;
 				case 44:
+                    R_Release(player);
 					break;
 				case 45:
+                    UR_Release(player);
 					break;
 				case 46:
+                    UL_Release(player);
 					break;
 				case 47:
+                    DR_Release(player);
 					break;
 				case 48:
+                    DL_Release(player);
 					break;
 				case 49:
 					break;
@@ -298,7 +330,7 @@ void exec(std::stack<int> cmds, int &player){
 
 }
 
-void init_stack(std::stack<int> &actions, std::map<std::string,int> &assoc, std::string filename){
+void init_stack(std::stack<int> &actions, std::map<std::string,int> assoc, std::string filename){
     
     
     //1.Open file into vector of strings TEST: write each substring to terminal on new line
@@ -363,6 +395,22 @@ std::map<std::string,int> init_map(){
     {"DHCBF",30,},
     {"SPD", 31,},
     {"DSPD", 32,}
+    {"UHold", 33,},
+    {"DHold", 34,},
+    {"LHold", 35,},
+    {"RHold", 36,},
+    {"URHold", 37,},
+    {"ULHold", 38,},
+    {"DRHold", 39,},
+    {"DLHold", 40,},
+    {"URel", 41,},
+    {"DRel", 42,},
+    {"LRel", 43,},
+    {"RRel", 44,},
+    {"URRel", 45,},
+    {"ULRel", 46,},
+    {"DRRel", 47,},
+    {"DLRel", 48,}
     };
 
     return keys;
@@ -435,7 +483,7 @@ void D(){
     sleep(17);
     D_OFF;
 }
-void L(int &player){
+void L(int player){
     if(player == 1){
         L_ON;
         sleep(17);
@@ -447,7 +495,7 @@ void L(int &player){
         R_OFF;
     }
 }
-void R(int &player){
+void R(int player){
     if(player == 1){
         R_ON;
         sleep(17);
@@ -459,7 +507,7 @@ void R(int &player){
         L_OFF;
     }
 }
-void UR(int &player){
+void UR(int player){
     if(player == 1){
         U_ON;
         R_ON;
@@ -476,7 +524,7 @@ void UR(int &player){
     }
 
 }
-void UL(int &player){
+void UL(int player){
     if(player == 1){
         U_ON;
         L_ON;
@@ -492,7 +540,7 @@ void UL(int &player){
         R_OFF;
     }
 }
-void DR(int &player){
+void DR(int player){
     if(player == 1){
         D_ON;
         R_ON;
@@ -508,7 +556,7 @@ void DR(int &player){
         L_OFF;
     }
 }
-void DL(int &player){
+void DL(int player){
     if(player == 1){
         D_ON;
         L_ON;
@@ -524,7 +572,7 @@ void DL(int &player){
         R_OFF;     
     }
 }
-void QCF(int &player){
+void QCF(int player){
     if(player == 1){
         D();
         DR(1);
@@ -537,7 +585,7 @@ void QCF(int &player){
     }
 
 }
-void QCB(int &player){
+void QCB(int player){
     if(player == 1){
         D();
         DL(1);
@@ -550,7 +598,7 @@ void QCB(int &player){
     }
 
 }
-void HCF(int &player){
+void HCF(int player){
     if(player == 1){
         L(1);
         DL(1);
@@ -567,7 +615,7 @@ void HCF(int &player){
     }
 
 }
-void HCB(int &player){
+void HCB(int player){
     if(player == 1){
         R(1);
         DR(1);
@@ -583,7 +631,7 @@ void HCB(int &player){
         R(1);
     }
 }
-void HCFB(int &player){
+void HCFB(int player){
     if(player == 1){
         L(1);
         DL(1);
@@ -602,7 +650,7 @@ void HCFB(int &player){
     }
 
 }
-void HCBF(int &player){
+void HCBF(int player){
     if(player == 1){
         R(1);
         DR(1);
@@ -620,7 +668,7 @@ void HCBF(int &player){
         L(1);
     }
 }
-void DP(int &player){
+void DP(int player){
     if(player == 1){
         R(1);
         D();
@@ -633,7 +681,7 @@ void DP(int &player){
     }
 
 }
-void RDP(int &player){
+void RDP(int player){
     if(player == 1){
         L(1);
         D();
@@ -646,7 +694,7 @@ void RDP(int &player){
     }
 
 }
-void DQCF(int &player){
+void DQCF(int player){
     if(player == 1){
         QCF(1);
         QCF(1);
@@ -657,7 +705,7 @@ void DQCF(int &player){
     }
 
 }
-void DQCB(int &player){
+void DQCB(int player){
     if(player == 1){
         QCB(1);
         QCB(1);
@@ -667,7 +715,7 @@ void DQCB(int &player){
         QCF(1);
     }
 }
-void DHCF(int &player){
+void DHCF(int player){
     if(player == 1){
         HCF(1);
         HCF(1);
@@ -677,7 +725,7 @@ void DHCF(int &player){
         HCB(1);
     }
 }
-void DHCB(int &player){
+void DHCB(int player){
     if(player == 1){
         HCB(1);
         HCB(1);
@@ -687,7 +735,7 @@ void DHCB(int &player){
         HCF(1);       
     }
 }
-void DHCFB(int &player){
+void DHCFB(int player){
     if(player == 1){
         HCFB(1);
         HCFB(1);
@@ -697,7 +745,7 @@ void DHCFB(int &player){
         HCBF(1);
     }
 }
-void DHCBF(int &player){
+void DHCBF(int player){
     if(player == 1){
         HCBF(1);
         HCBF(1);        
@@ -708,7 +756,7 @@ void DHCBF(int &player){
     }
 
 }
-void SPD(int &player){
+void SPD(int player){
     if(player == 1){
         R(1);
         DR(1);
@@ -732,7 +780,133 @@ void SPD(int &player){
         L(1);
     }
 }
-void DSPD(int &player){
+void DSPD(int player){
     SPD(player);
     SPD(player);
+}
+void U_Hold(){
+    U_ON;
+}
+void D_Hold(){
+    D_ON;
+}
+void L_Hold(int player){
+    if(player == 1){
+        L_ON;
+    }
+    else{
+        R_ON;
+    }
+}
+void R_Hold(int player){
+    if(player == 1){
+        R_ON;
+    }
+    else{
+        L_ON;
+    }
+}
+void UR_Hold(int player){
+    if(player == 1){
+        U_ON;
+        R_ON;
+    }
+    else{
+        U_ON;
+        L_ON;
+    }
+}
+void UL_Hold(int player){
+    if(player == 1){
+        U_ON;
+        L_ON;
+    }
+    else{
+        U_ON;
+        R_ON;
+    }
+}
+void DR_Hold(int player){
+    if(player == 1){
+        D_ON;
+        R_ON;
+    }
+    else{
+        D_ON;
+        L_ON;
+    }
+
+}
+void DL_Hold(int player){
+    if(player == 1){
+        D_ON;
+        L_ON;
+    }
+    else{
+        D_ON;
+        R_ON;
+    }
+}
+void U_Release(){
+    U_OFF;
+}
+void D_Release(){
+    D_OFF;
+}
+void L_Release(int player){
+    if(player == 1){
+        L_OFF;
+    }
+    else{
+        R_OFF;
+    }
+}
+void R_Release(int player){
+    if(player == 1){
+        R_OFF;
+    }
+    else{
+        L_OFF;
+    }
+}
+void UR_Release(int player){
+    if(player == 1){
+        U_OFF;
+        R_OFF;
+    }
+    else{
+        U_OFF;
+        L_OFF;
+    }
+
+}
+void UL_Release(int player){
+    if(player == 1){
+        U_OFF;
+        L_OFF;
+    }
+    else{
+        U_OFF;
+        R_OFF;
+    }
+}
+void DR_Release(int player){
+    if(player == 1){
+        D_OFF;
+        R_OFF;
+    }
+    else{
+        D_OFF;
+        L_OFF;
+    }
+}
+void DL_Release(int player){
+    if(player == 1){
+        D_OFF;
+        L_OFF;
+    }
+    else{
+        D_OFF;
+        R_OFF;
+    }
 }
