@@ -7,30 +7,30 @@
 #include<thread>
 #include<chrono>
 #include<wiringPi.h>
-#define A_ON digitalWrite(8, HIGH)
-#define A_OFF digitalWrite(8, LOW)
-#define B_ON digitalWrite(10, HIGH)
-#define B_OFF digitalWrite(10, LOW)
-#define X_ON digitalWrite(12, HIGH)
-#define X_OFF digitalWrite(12, LOW)
-#define Y_ON digitalWrite(16, HIGH)
-#define Y_OFF digitalWrite(16, LOW)
-#define RB_ON digitalWrite(18, HIGH)
-#define RB_OFF digitalWrite(18, LOW)
-#define RT_ON digitalWrite(22, HIGH)
-#define RT_OFF digitalWrite(22, LOW)
-#define LB_ON digitalWrite(24, HIGH)
-#define LB_OFF digitalWrite(24, LOW)
-#define LT_ON digitalWrite(26, HIGH)
-#define LT_OFF digitalWrite(26, LOW)
-#define U_ON digitalWrite(28, HIGH)
-#define U_OFF digitalWrite(28, LOW)
-#define D_ON digitalWrite(32, HIGH)
-#define D_OFF digitalWrite(32, LOW)
-#define L_ON digitalWrite(36, HIGH)
-#define L_OFF digitalWrite(36, LOW)
-#define R_ON digitalWrite(38, HIGH)
-#define R_OFF digitalWrite(38, LOW)
+#define A_ON digitalWrite(15, HIGH)
+#define A_OFF digitalWrite(15, LOW)
+#define B_ON digitalWrite(16, HIGH)
+#define B_OFF digitalWrite(16, LOW)
+#define X_ON digitalWrite(1, HIGH)
+#define X_OFF digitalWrite(1, LOW)
+#define Y_ON digitalWrite(4, HIGH)
+#define Y_OFF digitalWrite(4, LOW)
+#define RB_ON digitalWrite(5, HIGH)
+#define RB_OFF digitalWrite(5, LOW)
+#define RT_ON digitalWrite(6, HIGH)
+#define RT_OFF digitalWrite(6, LOW)
+#define LB_ON digitalWrite(10, HIGH)
+#define LB_OFF digitalWrite(10, LOW)
+#define LT_ON digitalWrite(11, HIGH)
+#define LT_OFF digitalWrite(11, LOW)
+#define U_ON digitalWrite(31, HIGH)
+#define U_OFF digitalWrite(31, LOW)
+#define D_ON digitalWrite(26, HIGH)
+#define D_OFF digitalWrite(26, LOW)
+#define L_ON digitalWrite(27, HIGH)
+#define L_OFF digitalWrite(27, LOW)
+#define R_ON digitalWrite(28, HIGH)
+#define R_OFF digitalWrite(28, LOW)
 
 
 void init_stack(std::stack<int> &actions, std::map<std::string,int> &assoc, std::string filename);
@@ -87,55 +87,55 @@ int main(){
 
     wiringPiSetup();
 
-    pinMode(8,OUTPUT); //A
+    pinMode(15,OUTPUT); //A
     A_OFF;
-    pinMode(10,OUTPUT); //B
+    pinMode(16,OUTPUT); //B
     B_OFF;
-    pinMode(12,OUTPUT); //X
+    pinMode(1,OUTPUT); //X
     X_OFF;
-    pinMode(16,OUTPUT); //Y
+    pinMode(4,OUTPUT); //Y
     Y_OFF;
-    pinMode(18,OUTPUT); //RB
+    pinMode(5,OUTPUT); //RB
     RB_OFF;
-    pinMode(22,OUTPUT); //RT
+    pinMode(6,OUTPUT); //RT
     RT_OFF;
-    pinMode(24,OUTPUT); //LB
+    pinMode(10,OUTPUT); //LB
     LB_OFF;
-    pinMode(26,OUTPUT); //LT
+    pinMode(11,OUTPUT); //LT
     LT_OFF;
-    pinMode(28,OUTPUT); //U
+    pinMode(31,OUTPUT); //U
     U_OFF;
-    pinMode(32,OUTPUT); //D
+    pinMode(26,OUTPUT); //D
     D_OFF;
-    pinMode(36,OUTPUT); //L
+    pinMode(27,OUTPUT); //L
     L_OFF;
-    pinMode(38,OUTPUT); //R
+    pinMode(28,OUTPUT); //R
     R_OFF;
 
-    pinMode(29, INPUT); //macro 1
-    pinMode(31, INPUT); //macro 2
-    pinMode(33, INPUT); //macro 3
-    pinMode(35, INPUT); //macro 4
-    pinMode(37, INPUT); //position switch
+    pinMode(21, INPUT); //macro 1
+    pinMode(22, INPUT); //macro 2
+    pinMode(23, INPUT); //macro 3
+    pinMode(24, INPUT); //macro 4
+    pinMode(25, INPUT); //position switch
 
-    pinMode(40, OUTPUT);
-    digitalWrite(40, HIGH); //LED to say macros are ready
+    pinMode(29, OUTPUT);
+    digitalWrite(29, HIGH); //LED to say macros are ready
 
 
     while(true){
-        if(digitalRead(29)){ //change to microcontroller 1
+        if(digitalRead(21)){ //change to microcontroller 1
             exec(cmds_one, player);
         }
-        if(digitalRead(31)){ //change to microcontroller 2
+        if(digitalRead(22)){ //change to microcontroller 2
             exec(cmds_two, player);
         }
-        if(digitalRead(33)){ //change to microcontroller 3
+        if(digitalRead(23)){ //change to microcontroller 3
             exec(cmds_three, player);
         }
-        if(digitalRead(35)){ //change to microcontroller 4
+        if(digitalRead(24)){ //change to microcontroller 4
             exec(cmds_four, player);
         }
-        if(digitalRead(37)){
+        if(digitalRead(25)){
             if(player == 1){
                 player = 2;
             }
