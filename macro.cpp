@@ -87,24 +87,39 @@ int main(){
 
     wiringPiSetup();
 
-    pinMode(8,OUTPUT);
-    pinMode(10,OUTPUT);
-    pinMode(12,OUTPUT);
-    pinMode(16,OUTPUT);
-    pinMode(18,OUTPUT);
-    pinMode(22,OUTPUT);
-    pinMode(24,OUTPUT);
-    pinMode(26,OUTPUT);
-    pinMode(28,OUTPUT);
-    pinMode(32,OUTPUT);
-    pinMode(36,OUTPUT);
-    pinMode(38,OUTPUT);
+    pinMode(8,OUTPUT); //A
+    A_OFF;
+    pinMode(10,OUTPUT); //B
+    B_OFF;
+    pinMode(12,OUTPUT); //X
+    X_OFF;
+    pinMode(16,OUTPUT); //Y
+    Y_OFF;
+    pinMode(18,OUTPUT); //RB
+    RB_OFF;
+    pinMode(22,OUTPUT); //RT
+    RT_OFF;
+    pinMode(24,OUTPUT); //LB
+    LB_OFF;
+    pinMode(26,OUTPUT); //LT
+    LT_OFF;
+    pinMode(28,OUTPUT); //U
+    U_OFF;
+    pinMode(32,OUTPUT); //D
+    D_OFF;
+    pinMode(36,OUTPUT); //L
+    L_OFF;
+    pinMode(38,OUTPUT); //R
+    R_OFF;
 
-    pinMode(29, INPUT);
-    pinMode(31, INPUT);
-    pinMode(33, INPUT);
-    pinMode(35, INPUT);
-    pinMode(37, INPUT);
+    pinMode(29, INPUT); //macro 1
+    pinMode(31, INPUT); //macro 2
+    pinMode(33, INPUT); //macro 3
+    pinMode(35, INPUT); //macro 4
+    pinMode(37, INPUT); //position switch
+
+    pinMode(40, OUTPUT);
+    digitalWrite(40, HIGH); //LED to say macros are ready
 
 
     while(true){
@@ -273,6 +288,8 @@ void exec(std::stack<int> cmds, int &player){
 					break;
 				case 49:
 					break;
+                default:
+                    break;
             }
 
         }
