@@ -396,7 +396,7 @@ std::map<std::string,int> init_map(){
     {"DHCFB",29,},
     {"DHCBF",30,},
     {"SPD", 31,},
-    {"DSPD", 32,}
+    {"DSPD", 32,},
     {"UHold", 33,},
     {"DHold", 34,},
     {"LHold", 35,},
