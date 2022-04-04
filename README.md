@@ -3,7 +3,7 @@ Logic for a Raspberry Pi Zero W to allow button Macros on a DIY Arcade Stick
 
 ## Build Instrucions
 
-Build with ```g++ -std=c++11 -Wall -o macro macro.cpp -lwiringPi``` in the Raspberry Pi terminal
+Build with ```g++ -std=c++20 -Wall -o macro macro.cpp -lwiringPi``` in the Raspberry Pi terminal
 
 ## Profiles
 
