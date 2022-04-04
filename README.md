@@ -1,9 +1,37 @@
 # FightStick-Macro
 Logic for a Raspberry Pi Zero W to allow button Macros on a DIY Arcade Stick
 
-## Build Instrucions
+## Setup Instructions
 
-Build with ```g++ -std=c++20 -Wall -o macro macro.cpp -lwiringPi``` in the Raspberry Pi terminal
+First thing to do is install Raspbian Lite and setup Wi-Fi and SSH
+
+[How to install Raspbian Lite, and set up Wi-Fi and SSH](https://randomnerdtutorials.com/installing-raspbian-lite-enabling-and-connecting-with-ssh/)
+
+### Getting files from Github
+
+In the command line, type the following commands in order:
+
+```
+cd ~/
+```
+```
+git clone https://github.com/jake-s2021/FightStick-Macro
+```
+```
+cd Fightstick-Macro
+```
+
+### Building the binary
+
+Build with ```g++ -std=c++20 -Wall -o macro macro.cpp -lwiringPi``` . ```macro``` will be the executable, in the same folder
+
+### Boot program on startup
+
+Once ```macro``` is built, type the following command
+
+```ln -s macro /etc/init.d```
+
+The program will now run immediately after the system has booted.
 
 ## Profiles
 
