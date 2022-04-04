@@ -449,11 +449,17 @@ void sleep(int ms){
 }
 
 bool update_made(auto &init_time_one, auto &init_time_two, auto &init_time_three, auto &init_time_four){
-    if(init_time_one < std::filesystem::last_write_time("Profile_One") || init_time_two < std::filesystem::last_write_time("Profile_Two") || init_time_three < std::filesystem::last_write_time("Profile_Three") || init_time_four < std::filesystem::last_write_time("Profile_Four")){
-        init_time_one = std::filesystem::last_write_time("Profile_One"); 
-        init_time_two = std::filesystem::last_write_time("Profile_Two");
-        init_time_three = std::filesystem::last_write_time("Profile_Three");
-        init_time_four = std::filesystem::last_write_time("Profile_Four");
+
+    auto curr_time_one = std::filesystem::last_write_time("Profile_One"); 
+    auto curr_time_two = std::filesystem::last_write_time("Profile_Two");
+    auto curr_time_three = std::filesystem::last_write_time("Profile_Three");
+    auto curr_time_four = std::filesystem::last_write_time("Profile_Four");
+
+    if(init_time_one < curr_time_one || init_time_two < curr_time_two || init_time_three < curr_time_three || init_time_four < curr_time_four){
+        init_time_one = curr_time_one; 
+        init_time_two = curr_time_two;
+        init_time_three = curr_time_three;
+        init_time_four = curr_time_four;
         return true;
     }
     return false;
