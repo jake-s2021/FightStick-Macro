@@ -37,7 +37,7 @@
 void init_stack(std::stack<int> &actions, std::map<std::string,int> assoc, std::string filename);
 std::map<std::string,int> init_map();
 bool is_num(std::string num);
-bool update_made(auto init_time_one, auto init_time_two, auto init_time_three, auto init_time_four);
+bool update_made(auto &init_time_one, auto &init_time_two, auto &init_time_three, auto &init_time_four);
 void exec(std::stack<int> cmds, int player);
 void sleep(int ms);
 void A();
@@ -448,8 +448,12 @@ void sleep(int ms){
     std::this_thread::sleep_for(std::chrono::milliseconds(ms));
 }
 
-bool update_made(auto init_time_one, auto init_time_two, auto init_time_three, auto init_time_four){
+bool update_made(auto &init_time_one, auto &init_time_two, auto &init_time_three, auto &init_time_four){
     if(init_time_one < std::filesystem::last_write_time("Profile_One") || init_time_two < std::filesystem::last_write_time("Profile_Two") || init_time_three < std::filesystem::last_write_time("Profile_Three") || init_time_four < std::filesystem::last_write_time("Profile_Four")){
+        init_time_one = std::filesystem::last_write_time("Profile_One"); 
+        init_time_two = std::filesystem::last_write_time("Profile_Two");
+        init_time_three = std::filesystem::last_write_time("Profile_Three");
+        init_time_four = std::filesystem::last_write_time("Profile_Four");
         return true;
     }
     return false;
