@@ -31,7 +31,7 @@ Build with ```g++ -std=c++20 -Wall -o macro macro.cpp -lwiringPi``` . ```macro``
 
 Once ```macro``` is built, type the following command
 
-```ln -s macro /etc/init.d```
+```ln -s /home/pi/FightStick-Macro/macro /etc/init.d```
 
 The program will now run immediately after the system has booted.
 
