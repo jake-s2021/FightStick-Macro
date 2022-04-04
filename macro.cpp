@@ -6,6 +6,7 @@
 #include<vector>
 #include<thread>
 #include<chrono>
+#include<filesystem>
 #include<wiringPi.h>
 #define A_ON digitalWrite(15, HIGH)
 #define A_OFF digitalWrite(15, LOW)
@@ -36,6 +37,7 @@
 void init_stack(std::stack<int> &actions, std::map<std::string,int> assoc, std::string filename);
 std::map<std::string,int> init_map();
 bool is_num(std::string num);
+bool update_made(auto init_time_one, auto init_time_two, auto init_time_three, auto init_time_four);
 void exec(std::stack<int> cmds, int player);
 void sleep(int ms);
 void A();
@@ -95,6 +97,11 @@ int main(){
     std::stack<int> cmds_three;
     std::stack<int> cmds_four;
     int player = 1;
+    auto one_date = std::filesystem::last_write_time("Profile_One");
+    auto two_date = std::filesystem::last_write_time("Profile_Two");
+    auto three_date = std::filesystem::last_write_time("Profile_Three");
+    auto four_date = std::filesystem::last_write_time("Profile_Four");
+    
 
     init_stack(cmds_one, keys, "Profile_One");
     init_stack(cmds_two, keys, "Profile_Two");
@@ -161,6 +168,13 @@ int main(){
                 digitalWrite(29, HIGH);
             }
         }
+        if(update_made(one_date, two_date, three_date, four_date)){
+            init_stack(cmds_one, keys, "Profile_One");
+            init_stack(cmds_two, keys, "Profile_Two");
+            init_stack(cmds_three, keys, "Profile_Three");
+            init_stack(cmds_four, keys, "Profile_Four");
+        }
+
     }
 
 }
@@ -432,6 +446,13 @@ bool is_num(std::string num){
 
 void sleep(int ms){
     std::this_thread::sleep_for(std::chrono::milliseconds(ms));
+}
+
+bool update_made(auto init_time_one, auto init_time_two, auto init_time_three, auto init_time_four){
+    if(init_time_one < std::filesystem::last_write_time("Profile_One") || init_time_two std::filesystem::last_write_time("Profile_Two") || init_time_three < std::filesystem::last_write_time("Profile_Three") || init_time_four < std::filesystem::last_write_time("Profile_Four")){
+        return true;
+    }
+    return false;
 }
 
 void A(){
