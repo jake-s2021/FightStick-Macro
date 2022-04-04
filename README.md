@@ -5,9 +5,12 @@ Logic for a Raspberry Pi Zero W to allow button Macros on a DIY Arcade Stick
 
 ### Install Raspbian Lite
 
-First thing to do is install Raspbian Lite and setup Wi-Fi and SSH
+First thing to do is install Raspbian Lite and setup Wi-Fi and SSH, and setup auto-login
 
 [How to install Raspbian Lite, and set up Wi-Fi and SSH](https://randomnerdtutorials.com/installing-raspbian-lite-enabling-and-connecting-with-ssh/)
+
+[How to setup auto-login](https://raspberrypi.stackexchange.com/questions/40415/how-to-enable-auto-login)
+
 
 ### Getting files from Github
 
