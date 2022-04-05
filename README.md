@@ -48,11 +48,15 @@ Build with ```g++ -std=c++20 -Wall -o macro macro.cpp -lwiringPi``` . ```macro``
 
 ### Boot program on startup
 
-Once ```macro``` is built, type the following command
+Once ```macro``` is built, add the following commands to the end of your ```.bashrc```
 
-```ln -s /home/pi/FightStick-Macro/macro /etc/init.d```
+```
+cd /home/pi/FightStick-Macro
+./macro&
+cd Profiles
+```
 
-The program will now run immediately after the system has booted.
+The program will now run immediately in the background after the system has booted. When you ssh into a terminal it will continue running and you can modify or change your Profiles.
 
 ## Profiles
 
