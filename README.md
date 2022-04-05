@@ -87,7 +87,7 @@ RRel
 ```
 will hold Right for 2 seconds
 
-the number of milliseconds must be 100 or greater. 1 frame = 17ms at 60FPS (1/60 = 0.0166667)
+the number of milliseconds must be 100 or greater (6 frames). 1 frame = 17ms at 60FPS (1/60 = 0.0166667)
 
 ### QCF
 
