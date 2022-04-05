@@ -52,7 +52,9 @@ Once ```macro``` is built, add the following commands to the end of your ```.bas
 
 ```
 cd /home/pi/FightStick-Macro
-./macro&
+if [ "x${SSH_TTY}" = "x" ]; then
+        ./macro&
+fi
 cd Profiles
 ```
 
