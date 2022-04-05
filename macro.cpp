@@ -88,6 +88,23 @@ void UR_Release(int player);
 void UL_Release(int player);
 void DR_Release(int player);
 void DL_Release(int player);
+void AHold();
+void BHold();
+void XHold();
+void YHold();
+void RBHold();
+void RTHold();
+void LBHold();
+void LTHold();
+void ARel();
+void BRel();
+void XRel();
+void YRel();
+void RBRel();
+void RTRel();
+void LBRel();
+void LTRel();
+
 
 int main(){
 
@@ -185,7 +202,7 @@ void exec(std::stack<int> cmds, int player){
         int next = cmds.top();
         cmds.pop();
 
-        if(next > 49){
+        if(next > 99){
             sleep(next);
         }
         else{
@@ -334,9 +351,56 @@ void exec(std::stack<int> cmds, int player){
 				case 48:
                     DL_Release(player);
 					break;
-				case 49:
-					break;
+                case 49:
+                    AHold();
+                    break;
+                case 50:
+                    BHold();
+                    break;
+                case 51:
+                    XHold();
+                    break;
+                case 52:
+                    YHold();
+                    break;
+                case 53:
+                    RBHold();
+                    break;
+                case 54:
+                    RTHold();
+                    break;
+                case 55:
+                    LBHold();
+                    break;
+                case 56:
+                    LTHold();
+                    break;
+                case 57:
+                    ARel();
+                    break;
+                case 58:
+                    BRel();
+                    break;
+                case 59:
+                    XRel();
+                    break;
+                case 60:
+                    YRel();
+                    break;
+                case 61:
+                    RBRel();
+                    break;
+                case 62:
+                    RTRel();
+                    break;
+                case 63:
+                    LBRel();
+                    break;
+                case 64:
+                    LTRel();
+                    break;
                 default:
+                    std::cout << "unknown command\n";
                     break;
             }
 
@@ -365,7 +429,7 @@ void init_stack(std::stack<int> &actions, std::map<std::string,int> assoc, std::
         if(assoc.find(unparsed_actions[i]) != assoc.end()){
             actions.push(assoc[unparsed_actions[i]]);
         }
-        else if(is_num(unparsed_actions[i]) && std::stoi(unparsed_actions[i])>49 && !actions.empty()){ //if actions is empty and the first command is numeric then it should be ignored
+        else if(is_num(unparsed_actions[i]) && std::stoi(unparsed_actions[i])>99 && !actions.empty()){ //if actions is empty and the first command is numeric then it should be ignored
             actions.push(std::stoi(unparsed_actions[i]));
         }
     }
@@ -426,7 +490,23 @@ std::map<std::string,int> init_map(){
     {"URRel", 45,},
     {"ULRel", 46,},
     {"DRRel", 47,},
-    {"DLRel", 48,}
+    {"DLRel", 48,},
+    {"AHold",49,},
+    {"BHold",50,},
+    {"XHold",51,},
+    {"YHold",52,},
+    {"RBHold",53,},
+    {"RTHold",54,},
+    {"LBHold",55,},
+    {"LTHold",56,},
+    {"ARel",57,},
+    {"BRel",58,},
+    {"XRel",59,},
+    {"YRel",60,},
+    {"RBRel",61,},
+    {"RTRel",62,},
+    {"LBRel",63,},
+    {"LTRel",64,}
     };
 
     return keys;
@@ -942,4 +1022,52 @@ void DL_Release(int player){
         D_OFF;
         R_OFF;
     }
+}
+void AHold(){
+    A_ON;
+}
+void BHold(){
+    B_ON;
+}
+void XHold(){
+    X_ON;
+}
+void YHold(){
+    Y_ON;
+}
+void RBHold(){
+    RB_ON;
+}
+void RTHold(){
+    RT_ON;
+}
+void LBHold(){
+    LB_ON;
+}
+void LTHold(){
+    LT_ON;
+}
+void ARel(){
+    A_OFF;
+}
+void BRel(){
+    B_OFF;
+}
+void XRel(){
+    X_OFF;
+}
+void YRel(){
+    Y_OFF;
+}
+void RBRel(){
+    RB_OFF;
+}
+void RTRel(){
+    RT_OFF;
+}
+void LBRel(){
+    LB_OFF;
+}
+void LTRel(){
+    LT_OFF;
 }
