@@ -163,19 +163,19 @@ int main(){
 
 
     while(true){
-        if(digitalRead(21)){ //change to microcontroller 1
+        if(!digitalRead(21)){ //change to microcontroller 1
             exec(cmds_one, player);
         }
-        if(digitalRead(22)){ //change to microcontroller 2
+        if(!digitalRead(22)){ //change to microcontroller 2
             exec(cmds_two, player);
         }
-        if(digitalRead(23)){ //change to microcontroller 3
+        if(!digitalRead(23)){ //change to microcontroller 3
             exec(cmds_three, player);
         }
-        if(digitalRead(24)){ //change to microcontroller 4
+        if(!digitalRead(24)){ //change to microcontroller 4
             exec(cmds_four, player);
         }
-        if(digitalRead(25)){
+        if(!digitalRead(25)){
             if(player == 1){
                 player = 2;
                 digitalWrite(29, LOW);
