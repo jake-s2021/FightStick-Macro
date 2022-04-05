@@ -114,16 +114,16 @@ int main(){
     std::stack<int> cmds_three;
     std::stack<int> cmds_four;
     int player = 1;
-    auto one_date = std::filesystem::last_write_time("Profile_One");
-    auto two_date = std::filesystem::last_write_time("Profile_Two");
-    auto three_date = std::filesystem::last_write_time("Profile_Three");
-    auto four_date = std::filesystem::last_write_time("Profile_Four");
+    auto one_date = std::filesystem::last_write_time("Profiles/Profile_One");
+    auto two_date = std::filesystem::last_write_time("Profiles/Profile_Two");
+    auto three_date = std::filesystem::last_write_time("Profiles/Profile_Three");
+    auto four_date = std::filesystem::last_write_time("Profiles/Profile_Four");
     
 
-    init_stack(cmds_one, keys, "Profile_One");
-    init_stack(cmds_two, keys, "Profile_Two");
-    init_stack(cmds_three, keys, "Profile_Three");
-    init_stack(cmds_four, keys, "Profile_Four");
+    init_stack(cmds_one, keys, "Profiles/Profile_One");
+    init_stack(cmds_two, keys, "Profiles/Profile_Two");
+    init_stack(cmds_three, keys, "Profiles/Profile_Three");
+    init_stack(cmds_four, keys, "Profiles/Profile_Four");
 
     wiringPiSetup();
 
@@ -186,10 +186,10 @@ int main(){
             }
         }
         if(update_made(one_date, two_date, three_date, four_date)){
-            init_stack(cmds_one, keys, "Profile_One");
-            init_stack(cmds_two, keys, "Profile_Two");
-            init_stack(cmds_three, keys, "Profile_Three");
-            init_stack(cmds_four, keys, "Profile_Four");
+            init_stack(cmds_one, keys, "Profiles/Profile_One");
+            init_stack(cmds_two, keys, "Profiles/Profile_Two");
+            init_stack(cmds_three, keys, "Profiles/Profile_Three");
+            init_stack(cmds_four, keys, "Profiles/Profile_Four");
         }
 
     }
@@ -530,10 +530,10 @@ void sleep(int ms){
 
 bool update_made(auto &init_time_one, auto &init_time_two, auto &init_time_three, auto &init_time_four){
 
-    auto curr_time_one = std::filesystem::last_write_time("Profile_One"); 
-    auto curr_time_two = std::filesystem::last_write_time("Profile_Two");
-    auto curr_time_three = std::filesystem::last_write_time("Profile_Three");
-    auto curr_time_four = std::filesystem::last_write_time("Profile_Four");
+    auto curr_time_one = std::filesystem::last_write_time("Profiles/Profile_One"); 
+    auto curr_time_two = std::filesystem::last_write_time("Profiles/Profile_Two");
+    auto curr_time_three = std::filesystem::last_write_time("Profiles/Profile_Three");
+    auto curr_time_four = std::filesystem::last_write_time("Profiles/Profile_Four");
 
     if(init_time_one < curr_time_one || init_time_two < curr_time_two || init_time_three < curr_time_three || init_time_four < curr_time_four){
         init_time_one = curr_time_one; 
