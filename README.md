@@ -12,6 +12,20 @@ First thing to do is install Raspbian Lite and setup Wi-Fi and SSH, and setup au
 [How to setup auto-login](https://raspberrypi.stackexchange.com/questions/40415/how-to-enable-auto-login)
 
 
+### Getting Unofficial WiringPi
+
+WiringPi is depreciated, you'll need the unofficial build from [here](https://github.com/WiringPi/WiringPi/releases)
+
+Find the download link for the ```armhf``` version, then int he terminal type:
+
+```wget [url of armhf download link]```
+
+Then, type ```ls```, you should see a file with the ```.deb``` extension
+
+Now type ```sudo dpkg -i [wiringpi file].deb```
+
+WiringPi should now be installed!
+
 ### Getting files from Github
 
 In the command line, type the following commands in order:
@@ -25,6 +39,8 @@ git clone https://github.com/jake-s2021/FightStick-Macro
 ```
 cd Fightstick-Macro
 ```
+
+
 
 ### Building the binary
 
