@@ -74,13 +74,13 @@ Would execute a Hadouken
 
 ```
 LHold
-100
+850
 LRel
 RHold
 X
 RRel
 ```
-Would execute Chun-Li's Kikoken
+Would execute Chun-Li's Kikoken (850ms = 50 frames of charge)
 
 ## Commands
 
