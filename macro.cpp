@@ -158,8 +158,8 @@ int main(){
     pinMode(24, INPUT); //macro 4
     pinMode(25, INPUT); //position switch
 
-    pinMode(29, OUTPUT);
-    digitalWrite(29, HIGH); //LED to say macros are ready
+    pinMode(14, OUTPUT);
+    digitalWrite(14, HIGH); //LED to say macros are ready
 
 
     while(true){
@@ -178,11 +178,11 @@ int main(){
         if(!digitalRead(25)){
             if(player == 1){
                 player = 2;
-                digitalWrite(29, LOW);
+                digitalWrite(14, LOW);
             }
             else{
                 player = 1;
-                digitalWrite(29, HIGH);
+                digitalWrite(14, HIGH);
             }
         }
         if(update_made(one_date, two_date, three_date, four_date)){
