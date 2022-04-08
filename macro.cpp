@@ -104,6 +104,36 @@ void RBRel();
 void RTRel();
 void LBRel();
 void LTRel();
+/*
+A, B
+A, X
+A, Y
+A, RB
+A, RT
+A, LB
+A, LT
+B, X
+B, Y
+B, RB
+B, RT
+B, LB
+B, LT
+X, Y
+X, RB
+X, RT
+X, LB
+X, LT
+Y, RB
+Y, RT
+Y, LB
+Y, LT
+RB, RT
+RB, LB
+RB, LT
+RT, LB
+RT, LT
+LB, LT
+*/
 
 
 int main(){
@@ -417,6 +447,11 @@ void init_stack(std::stack<int> &actions, std::map<std::string,int> assoc, std::
     std::vector<std::string> unparsed_actions;
     std::ifstream profile(filename);
     std::string temp;
+
+    //empty stack if it is not already empty
+    while(!actions.empty()){
+        actions.pop();
+    }
 
 
     while(std::getline(profile, temp)){
