@@ -104,36 +104,6 @@ void RBRel();
 void RTRel();
 void LBRel();
 void LTRel();
-/*
-A, B
-A, X
-A, Y
-A, RB
-A, RT
-A, LB
-A, LT
-B, X
-B, Y
-B, RB
-B, RT
-B, LB
-B, LT
-X, Y
-X, RB
-X, RT
-X, LB
-X, LT
-Y, RB
-Y, RT
-Y, LB
-Y, LT
-RB, RT
-RB, LB
-RB, LT
-RT, LB
-RT, LT
-LB, LT
-*/
 
 
 int main(){
