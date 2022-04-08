@@ -53,6 +53,10 @@ Once ```macro``` is built, add the following commands to the end of your ```.bas
 ```
 cd /home/pi/FightStick-Macro
 if [ "x${SSH_TTY}" = "x" ]; then
+        gpio -g mode 13 up
+        gpio -g mode 19 up
+        gpio -g mode 26 up
+        gpio -g mode 11 up
         ./macro&
 fi
 cd Profiles
