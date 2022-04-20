@@ -113,11 +113,11 @@ int main(){
     std::stack<int> cmds_two;
     std::stack<int> cmds_three;
     std::stack<int> cmds_four;
-    int player = 1;
     auto one_date = std::filesystem::last_write_time("Profiles/Profile_One");
     auto two_date = std::filesystem::last_write_time("Profiles/Profile_Two");
     auto three_date = std::filesystem::last_write_time("Profiles/Profile_Three");
     auto four_date = std::filesystem::last_write_time("Profiles/Profile_Four");
+    int player = 1;
     
 
     init_stack(cmds_one, keys, "Profiles/Profile_One");
